@@ -1,0 +1,4 @@
+CREATE USER 'java'@'10.10.1.2' IDENTIFIED BY 'tpcc@mysql';
+GRANT ALL PRIVILEGES ON *.* TO 'java'@'10.10.1.2' WITH GRANT OPTION;
+SELECT User, Host FROM mysql.user;
+CREATE DATABASE benchbase;

@@ -1,0 +1,39 @@
+# File description
+    1. Config.java
+        change tag values (<terminals>) in benchbase mysql setting file "sample_tpcc_config.xml" 
+        and the function to purge log files in mysql(commentted): 
+        mysql> PURGE BINARY LOGS BEFORE NOW();
+    2. tpcc_runall.sh 
+        execute the Config class and the benchbase benchmark;
+        results output to specified dir, print output to specified files.
+    3. set.sh + create-user.sql
+        set the mysql data dir at the server to be under ramdisk at /ramdisk;
+        create the user account and database for benchbase experiment.
+
+# Run
+    1. copy set.sh/create-user.sql to server, then
+        sh set.sh
+    2. copy Config.java/tpcc_runall.sh to client directory:
+        /benchmark/benchbase/target/benchbase-mysql
+        (the dir where benchmark jar file locates, need to execute from this directory)
+        javac Config.java
+        bash tpcc_runall.sh &
+
+
+# MySQL configurations
+
+    1. buffer pool size pool_size (in bytes): 
+    add following settings into /etc/mysql/mysql.conf.d/mysqld.cnf, require pool_size >= pool_instances * pool_chunk_size:
+
+    innodb_buffer_pool_size       = 134217728  (default) 
+    innodb_buffer_pool_instances  = 1          (default)
+    innodb_buffer_pool_chunk_size = 134217728  (default)
+
+    check system variables related to buffer pool size and its status:
+
+    SHOW VARIABLES LIKE "%innodb_buffer_pool_%";
+    SHOW ENGINE INNODB STATUS\G
+
+    reference: 
+    https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_buffer_pool
+    https://dev.mysql.com/doc/refman/8.0/en/innodb-buffer-pool-resize.html
