@@ -1,3 +1,5 @@
+./mvnw clean package -P mysql 
+
 # File description
     1. Config.java
         change tag values (<terminals>) in benchbase mysql setting file "sample_tpcc_config.xml" 
