@@ -10,10 +10,10 @@
     <batchsize>128</batchsize>
 
     
-    <scalefactor>5</scalefactor>
+    <scalefactor>64</scalefactor>
 
     
-    <terminals>5</terminals>
+    <terminals>140</terminals>
     <works>
         <work>
             <time>60</time>
