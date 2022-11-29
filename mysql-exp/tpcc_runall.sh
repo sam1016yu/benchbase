@@ -33,6 +33,7 @@ run_one (){
 	-c ~/benchbase/mysql-exp/sample_tpcc_config.xml \
 	--create=true --load=true --execute=true \
 	-d $result_dir
+	rm  $result_dir/*.raw.csv
 }
 
 
