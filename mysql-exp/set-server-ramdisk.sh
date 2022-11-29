@@ -20,5 +20,5 @@ sudo sh -c "echo 'max_connections = 1026' >> /etc/mysql/my.cnf"
 # sudo systemctl restart mysql
 fi
 sudo systemctl start mysql
-sudo mysql < create-user.sql
+sudo mysql < ~/benchbase/mysql-exp/create-user.sql
 
