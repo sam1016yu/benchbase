@@ -6,6 +6,7 @@ set_buffer_size (){
 	num_chunk=$1
 	chunk_size=$2
 	scp ~/benchbase/mysql-exp/set-buffer.sh miaoyu@server:~
+    # set mysql bufffer pool size, both number of chunks and size of each chunk
 	ssh miaoyu@server "sudo ~/set-buffer.sh  $num_chunk $chunk_size"
 	sleep 2
 }
@@ -21,7 +22,7 @@ run_one (){
 		echo "===================================================="
 		return 0
 	fi
-	#clean up binary log
+	#clean up binary log on server side
 	ssh miaoyu@server 'sudo mysql -se "PURGE BINARY LOGS BEFORE NOW()";'
 	set_buffer_size $buffer_pool $num_chunk $chunk_size
 	#modify config file
@@ -33,6 +34,7 @@ run_one (){
 	-c ~/benchbase/mysql-exp/sample_tpcc_config.xml \
 	--create=true --load=true --execute=true \
 	-d $result_dir
+    #clean raw result
 	rm  $result_dir/*.raw.csv
 }
 
