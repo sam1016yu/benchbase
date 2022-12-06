@@ -39,7 +39,7 @@ run_one (){
 }
 
 
-for WH in 1 2 4 8 16 32 64 128
+for WH in 1 2 4 8 16 32 64 128 256
 do
 	for terminal in 1 2 4 8 16 32 64 128 256 512
 	do
