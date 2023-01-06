@@ -19,7 +19,7 @@ innodb_buffer_pool_size=$((innodb_buffer_pool_chunk_size*innodb_buffer_pool_inst
 
 if (($# < 2))
 then
-    echo "Usage: set-buffer.sh <innodb_buffer_pool_size> <innodb_buffer_pool_instances> <innodb_buffer_pool_chunk_size>"
+    echo "Usage: set-buffer.sh <innodb_buffer_pool_instances> <innodb_buffer_pool_chunk_size>"
     exit 1
 fi
 
