@@ -24,7 +24,7 @@ run_one (){
 	fi
 	#clean up binary log on server side
 	ssh miaoyu@server 'sudo mysql -se "PURGE BINARY LOGS BEFORE NOW()";'
-	set_buffer_size $buffer_pool $num_chunk $chunk_size
+	set_buffer_size $num_chunk $chunk_size
 	#modify config file
 	~/benchbase/mysql-exp/config_tpcc.py $num_terminal $num_WH
 	cd ~/benchbase/target/benchbase-mysql
